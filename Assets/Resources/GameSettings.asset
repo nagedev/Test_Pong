@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28ef2e6b441f4028a47f8dd90c1bedcc, type: 3}
+  m_Name: GameSettings
+  m_EditorClassIdentifier: 
+  levelMono: {fileID: 5319642406744404765, guid: 2dba409b65e34ea4086c25d24ee824c4,
+    type: 3}
+  batPrefab: {fileID: -42446571120249276, guid: 9989fbaafe7e9c8489d8acaada2984a5,
+    type: 3}
+  ballSlowPrefab: {fileID: 2280195370817821773, guid: 83ed383c893568542bf85e6c8319318b,
+    type: 3}
+  ballFastPrefab: {fileID: 3897974259700256264, guid: 36856b931c7e20345b7740f8a7cb69b5,
+    type: 3}
+  ballMat: {fileID: 2100000, guid: 76d245f697f7f704692bd7a855599040, type: 2}
