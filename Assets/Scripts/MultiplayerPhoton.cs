@@ -42,8 +42,9 @@ namespace Pong
             var batTopId = _levelController.GetBat(BatPlace.Top).GetComponent<PhotonView>().ViewID;
             var batBottomId = _levelController.GetBat(BatPlace.Bottom).GetComponent<PhotonView>().ViewID;
             var ballId = _levelController.GetBall().GetComponent<PhotonView>().ViewID;
+            var ballType = (int) _levelController.GetBall().BallType;
 
-            object[] content = { batTopId, batBottomId, ballId };
+            object[] content = { batTopId, batBottomId, ballId, ballType };
             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
             PhotonNetwork.RaiseEvent(SyncEvent, content, raiseEventOptions, SendOptions.SendReliable);
             
@@ -59,12 +60,13 @@ namespace Pong
                 int batTopId = (int) data[0];
                 int batBottomId = (int) data[1];
                 int ballId = (int) data[2];
+                BallType ballType = (BallType) data[3]; 
 
-                Sync(batTopId, batBottomId, ballId);
+                Sync(batTopId, batBottomId, ballId, ballType);
             }
         }
 
-        private void Sync(int batTopId, int batBottomId, int ballId)
+        private void Sync(int batTopId, int batBottomId, int ballId, BallType ballType)
         {
             var batTop = _levelController.GetBat(BatPlace.Top);
             batTop.GetComponent<PhotonView>().ViewID = batTopId;
@@ -95,6 +97,10 @@ namespace Pong
             if (PhotonNetwork.IsMasterClient)
             {
                 ball.GetComponent<PhotonView>().RequestOwnership();
+            }
+            else
+            {
+                ball.ReconfigureBall(ballType, false);
             }
         }
 

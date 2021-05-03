@@ -24,7 +24,7 @@ namespace Pong
                 case BatControlType.Player:
                     _batControl = new BatControlPlayer(this, _inputProvider, _gameSettings);
                     break;
-                case BatControlType.Other:
+                default:
                     _batControl = new BatControlOther(this);
                     break;
             }

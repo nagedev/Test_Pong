@@ -38,22 +38,11 @@ namespace Pong
             return bat;
         }
 
-        public Ball CreateBall(BallType ballType)
+        public Ball CreateBall()
         {
-            Ball prefab;
-            switch (ballType)
-            {
-                case BallType.Fast:
-                    prefab = _gameSettings.BallFastPrefab;
-                    break;
-                case BallType.Slow:
-                    prefab = _gameSettings.BallSlowPrefab;
-                    break;
-                default:
-                    throw new ArgumentException();
-            }
+            Ball prefab = _gameSettings.BallPrefab;
             var ball = Object.Instantiate(prefab, _levelMono.Parent.transform);
-            ball.Inject(_levelController, _levelMono);
+            ball.Inject(_levelController, _levelMono, _gameSettings);
 
             _multiplayer.RegisterSyncedObject(ball.gameObject);
             return ball;

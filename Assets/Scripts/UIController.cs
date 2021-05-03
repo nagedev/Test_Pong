@@ -76,6 +76,8 @@ namespace Pong
                     gameplay.SetActive(false);
                     settings.SetActive(true);
                     break;
+                default:
+                    throw new ArgumentException();
             }
         }
 

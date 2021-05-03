@@ -49,8 +49,7 @@ namespace Pong
 
         private void SpawnBall()
         {
-            BallType ballType = (BallType) Random.Range(0, 2);
-            var ball = _objectsFactory.CreateBall(ballType);
+            var ball = _objectsFactory.CreateBall();
             ball.transform.position = _levelMono.BallPlace.position;
             
             _levelController.RegisterBall(ball);

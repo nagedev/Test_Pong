@@ -11,16 +11,20 @@ namespace Pong
         
         private LevelController _levelController;
         private LevelMono _levelMono;
+        private GameSettings _gameSettings;
+        
+        public BallType BallType { get; private set; }
 
         private void OnValidate()
         {
             rb = GetComponent<Rigidbody2D>();
         }
 
-        public void Inject(LevelController levelController, LevelMono levelMono)
+        public void Inject(LevelController levelController, LevelMono levelMono, GameSettings gameSettings)
         {
             _levelController = levelController;
             _levelMono = levelMono;
+            _gameSettings = gameSettings;
 
             ReconfigureBall(BallType.Slow);
         }
@@ -55,22 +59,18 @@ namespace Pong
             _levelController.AddScore();
         }
 
-        public void ReconfigureBall(BallType newType)
+        public void ReconfigureBall(BallType newType, bool launch = true)
         {
-            switch (newType)
+            initialForceMagnitude = _gameSettings.GetBallSettings(newType).InitialSpeed;
+            transform.localScale = Vector3.one * _gameSettings.GetBallSettings(newType).Size;
+
+            if (launch)
             {
-                case BallType.Fast:
-                    initialForceMagnitude = 7.5f;
-                    transform.localScale = Vector3.one * .67f;
-                    break;
-                case BallType.Slow:
-                    initialForceMagnitude = 5f;
-                    transform.localScale = Vector3.one * 1.2f;
-                    break;
+                transform.position = Vector3.zero;
+                Launch();
             }
-            
-            transform.position = Vector3.zero;
-            Launch();
+
+            BallType = newType;
         }
     }
 

@@ -16,8 +16,11 @@ MonoBehaviour:
     type: 3}
   batPrefab: {fileID: -42446571120249276, guid: 9989fbaafe7e9c8489d8acaada2984a5,
     type: 3}
-  ballSlowPrefab: {fileID: 2280195370817821773, guid: 83ed383c893568542bf85e6c8319318b,
-    type: 3}
-  ballFastPrefab: {fileID: 3897974259700256264, guid: 36856b931c7e20345b7740f8a7cb69b5,
+  ballPrefab: {fileID: 2280195370817821773, guid: 83ed383c893568542bf85e6c8319318b,
     type: 3}
   ballMat: {fileID: 2100000, guid: 76d245f697f7f704692bd7a855599040, type: 2}
+  ballsSettings:
+  - _initialSpeed: 5
+    _size: 1.2
+  - _initialSpeed: 7.5
+    _size: 0.75
